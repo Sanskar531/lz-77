@@ -24,8 +24,8 @@ function Decompression() {
         ">*": { m: 4 },
       }}
     >
-      <H3 sx={{ ml: 4 }}>Decompress:</H3>
-      <Box sx={{ display: "flex", ml: 4, gap: 1 }}>
+      <H3 sx={{ ml: 1.99 }}>Decompress:</H3>
+      <Box sx={{ display: "flex", m: 2, gap: 1 }}>
         <Box sx={{ flexGrow: 1 }}>
           <H5>To Decode:</H5>
           <TextField

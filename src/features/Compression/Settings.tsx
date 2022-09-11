@@ -17,7 +17,15 @@ function Settings({
   lookAheadSizeChangeHandler,
 }: SettingsProps) {
   return (
-    <Box sx={{ mt: 1 }}>
+    <Box
+      sx={{
+        mt: 1,
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <H3 sx={{ ml: 2 }}>Settings:</H3>
       <Box sx={{ display: "flex", ">*": { m: 2 } }}>
         <Box>
@@ -27,6 +35,7 @@ function Settings({
             inputProps={{
               maxLength: 3,
             }}
+            sx={{ width: "250px" }}
             onChange={searchBufferChangeHandler}
           ></TextField>
         </Box>
@@ -37,6 +46,7 @@ function Settings({
             inputProps={{
               maxLength: 3,
             }}
+            sx={{ width: "250px" }}
             onChange={lookAheadSizeChangeHandler}
           ></TextField>
         </Box>

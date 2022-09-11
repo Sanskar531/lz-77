@@ -1,8 +1,8 @@
 "use-strict";
 
-interface ICompresssionText { }
+interface Compressor { }
 
-export class LZ77 implements ICompresssionText {
+export class LZ77 implements Compressor {
   static compress(
     str: string,
     searchBufferSize: number,
@@ -26,15 +26,14 @@ export class LZ77 implements ICompresssionText {
         matchLength = 1;
         result.push(...currentLookAhead.slice(0, matchLength));
       } else {
-        matchLength = length!;
-        result.push(`<${offset},${length},${currentLookAhead[matchLength] ?? null}>`);
+        matchLength = length! as number;
+        result.push(`<${offset},${length}>`);
       }
 
       if (searchBuffer.length >= searchBufferSize) {
         for (let i = 0; i < matchLength; i++) {
           searchBuffer.shift();
         }
-        matchLength = Math.min(matchLength, Math.abs(searchBuffer.length - searchBufferSize))
       }
 
       searchBuffer.push(...currentLookAhead.slice(0, matchLength));
@@ -61,12 +60,13 @@ export class LZ77 implements ICompresssionText {
     }
 
     if (length <= 1) {
-      return [null, null];
+      return [null, null, null];
     }
 
     return [
       searchBuffer.length - joinedSearchBuffer.indexOf(currentlookAhead.slice(0, length - 1).join(""))
-      , length - 1
+      , length - 1,
+      currentlookAhead[length]
     ]
   }
 

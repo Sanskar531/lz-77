@@ -61,8 +61,8 @@ function Compression() {
           lookAheadSizeChangeHandler,
         }}
       />
-      <Box sx={{ display: "flex", ">*": { m: 2 }, flexDirection: "column" }}>
-        <H3 sx={{ ml: 2 }}>Compress:</H3>
+      <Box sx={{ display: "flex", flexDirection: "column" }}>
+        <H3>Compress:</H3>
         <Box sx={{ display: "flex", gap: 1 }}>
           <Box sx={{ flexGrow: 1 }}>
             <H5>To Encode:</H5>
