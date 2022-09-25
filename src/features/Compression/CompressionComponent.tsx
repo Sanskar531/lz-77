@@ -53,14 +53,48 @@ function Compression() {
         ">*": { m: 2 },
       }}
     >
-      <Settings
-        {...{
-          searchBuffer,
-          searchBufferChangeHandler,
-          lookAheadSize,
-          lookAheadSizeChangeHandler,
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
-      />
+      >
+        <Settings
+          {...{
+            searchBuffer,
+            searchBufferChangeHandler,
+            lookAheadSize,
+            lookAheadSizeChangeHandler,
+          }}
+        />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignSelf: "start",
+            gap: 5,
+          }}
+        >
+          <H3>Compression Rate:</H3>
+          <H3 sx={{ alignSelf: "center" }}>
+            {isNaN(
+              (encodeTextFieldRef.current?.value?.length ?? 1) /
+                (compressedValues.length ?? 1)
+            ) ||
+            Math.abs(
+              (encodeTextFieldRef.current?.value?.length ?? 1) /
+                (compressedValues.length ?? 1)
+            ) === Number.POSITIVE_INFINITY
+              ? 1
+              : Math.round(
+                  ((encodeTextFieldRef.current?.value?.length ?? 1) /
+                    (compressedValues.length ?? 1)) *
+                    100
+                ) / 100}
+          </H3>
+        </Box>
+      </Box>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <H3>Compress:</H3>
         <Box sx={{ display: "flex", gap: 1 }}>
